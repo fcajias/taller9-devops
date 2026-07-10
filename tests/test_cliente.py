@@ -78,3 +78,29 @@ def test_str_cliente():
     resultado = str(c)
     assert "Juan Pérez" in resultado
     assert "juan@email.com" in resultado
+
+
+def test_email_invalido():
+    """Verifica que se lanza error con email inválido."""
+    with pytest.raises(ValueError):
+        Cliente(1, "Juan", "emailsinformato")
+
+
+def test_to_dict_cliente():
+    """Verifica serialización del cliente a diccionario."""
+    c = Cliente(1, "Ana", "ana@email.com")
+    d = c.to_dict()
+    assert d["id"] == 1
+    assert d["nombre"] == "Ana"
+    assert d["email"] == "ana@email.com"
+    assert d["items"] == 0
+
+
+def test_from_dict_cliente():
+    """Verifica creación de Cliente desde diccionario."""
+    data = {"id": 5, "nombre": "Luis", "email": "luis@email.com"}
+    c = Cliente.from_dict(data)
+    assert c.id == 5
+    assert c.nombre == "Luis"
+    assert c.email == "luis@email.com"
+

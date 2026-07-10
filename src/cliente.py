@@ -19,6 +19,8 @@ class Cliente:
             nombre (str): Nombre completo del cliente.
             email (str): Correo electrónico del cliente.
         """
+        if "@" not in email:
+            raise ValueError("El email no es válido.")
         self.id = id
         self.nombre = nombre
         self.email = email
@@ -78,6 +80,32 @@ class Cliente:
         return (
             f"Cliente(id={self.id}, nombre='{self.nombre}', "
             f"email='{self.email}', items_carrito={len(self._carrito)})"
+        )
+
+    def to_dict(self) -> dict:
+        """Serializa el cliente a un diccionario."""
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "email": self.email,
+            "total_carrito": self.calcular_total(),
+            "items": len(self._carrito)
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Cliente":
+        """Crea un Cliente desde un diccionario.
+
+        Args:
+            data (dict): Diccionario con los datos del cliente.
+
+        Returns:
+            Cliente: Nueva instancia de Cliente.
+        """
+        return cls(
+            id=data["id"],
+            nombre=data["nombre"],
+            email=data["email"]
         )
 
     def __repr__(self) -> str:
