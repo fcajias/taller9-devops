@@ -19,6 +19,8 @@ class Cliente:
             nombre (str): Nombre completo del cliente.
             email (str): Correo electrónico del cliente.
         """
+        if "@" not in email:
+            raise ValueError("El email no es válido.")
         self.id = id
         self.nombre = nombre
         self.email = email
