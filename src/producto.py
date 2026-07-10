@@ -66,5 +66,15 @@ class Producto:
             f"precio=${self.precio:.2f}, stock={self.stock})"
         )
 
+    def to_dict(self) -> dict:
+        """Serializa el producto a un diccionario."""
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "precio": self.precio,
+            "stock": self.stock,
+            "disponible": self.esta_disponible()
+        }
+
     def __repr__(self) -> str:
         return self.__str__()
