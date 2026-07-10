@@ -17,10 +17,29 @@ class Producto:
             precio (float): Precio base del producto.
             stock (int): Cantidad disponible en inventario.
         """
+        if precio < 0:
+            raise ValueError("El precio no puede ser negativo.")
         self.id = id
         self.nombre = nombre
         self.precio = precio
         self.stock = stock
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Producto":
+        """Crea un Producto desde un diccionario.
+
+        Args:
+            data (dict): Diccionario con los datos del producto.
+
+        Returns:
+            Producto: Nueva instancia de Producto.
+        """
+        return cls(
+            id=data["id"],
+            nombre=data["nombre"],
+            precio=data["precio"],
+            stock=data.get("stock", 0)
+        )
 
     def aplicar_descuento(self, porcentaje: float) -> float:
         """
@@ -65,6 +84,16 @@ class Producto:
             f"Producto(id={self.id}, nombre='{self.nombre}', "
             f"precio=${self.precio:.2f}, stock={self.stock})"
         )
+
+    def to_dict(self) -> dict:
+        """Serializa el producto a un diccionario."""
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "precio": self.precio,
+            "stock": self.stock,
+            "disponible": self.esta_disponible()
+        }
 
     def __repr__(self) -> str:
         return self.__str__()
