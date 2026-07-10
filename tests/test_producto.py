@@ -59,3 +59,29 @@ def test_str_producto():
     resultado = str(p)
     assert "Laptop" in resultado
     assert "999.99" in resultado
+
+
+def test_to_dict():
+    """Verifica serialización a diccionario."""
+    p = Producto(1, "Laptop", 999.99, 5)
+    d = p.to_dict()
+    assert d["id"] == 1
+    assert d["nombre"] == "Laptop"
+    assert d["precio"] == 999.99
+    assert d["disponible"] is True
+
+
+def test_from_dict():
+    """Verifica creación de Producto desde diccionario."""
+    data = {"id": 2, "nombre": "Mouse", "precio": 35.50, "stock": 10}
+    p = Producto.from_dict(data)
+    assert p.id == 2
+    assert p.nombre == "Mouse"
+    assert p.precio == 35.50
+
+
+def test_precio_negativo():
+    """Verifica que no se permite precio negativo."""
+    with pytest.raises(ValueError):
+        Producto(1, "Laptop", -100.0, 5)
+
