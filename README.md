@@ -1,16 +1,16 @@
 # Taller 9 – GitHub Colaborativo con Fork, Pull Request y GitHub Actions
 
-## 📚 Descripción
-Sistema de ventas desarrollado en **Python** como parte del Taller 9 de la materia de DevOps.  
-Implementa un flujo colaborativo usando **Forks, Branches, Pull Requests y GitHub Actions**.
+##  Descripción
+Sistema de ventas desarrollado en **Python** como parte del Taller 9 de la materia de DevOps  
+Implementa un flujo colaborativo usando **Forks, Branches, Pull Requests y GitHub Actions**
 
-## 👥 Integrantes
+## Integrantes
 | Estudiante | GitHub | Rama | Funcionalidad |
 |-----------|--------|------|--------------|
 | Estudiante 1 | [@fcajias](https://github.com/fcajias) | `feature-fcajias` | Clase `Producto` |
 | Estudiante 2 | [@Fernando-Cajias](https://github.com/Fernando-Cajias) | `feature-fernando` | Clase `Cliente` |
 
-## 🏗️ Estructura del Proyecto
+##  Estructura del Proyecto
 ```
 taller9-devops/
 ├── .github/
@@ -27,7 +27,7 @@ taller9-devops/
 └── README.md
 ```
 
-## 🚀 Ejecución Local
+##  Ejecución Local
 
 ```bash
 # Instalar dependencias
@@ -40,15 +40,15 @@ python main.py
 python -m pytest tests/ -v
 ```
 
-## ⚙️ GitHub Actions
+##  GitHub Actions
 El workflow `build.yml` se ejecuta automáticamente en cada **push** y **pull request**:
-- ✅ Checkout del repositorio
-- 🐍 Configura Python 3.11
-- 📦 Instala dependencias
-- 🧪 Ejecuta tests con pytest
-- ✔ Muestra estado exitoso
+-  Checkout del repositorio
+-  Configura Python 3.11
+-  Instala dependencias
+-  Ejecuta tests con pytest
+-  Muestra estado exitoso
 
-## 📊 Criterios de Evaluación
+## Criterios de Evaluación
 - [x] Fork realizado correctamente
 - [x] Uso de ramas independientes
 - [x] Commits significativos (mín. 3 por estudiante)
